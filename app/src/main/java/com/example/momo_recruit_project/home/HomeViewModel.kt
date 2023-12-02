@@ -25,11 +25,12 @@ class HomeViewModel  @Inject constructor(private val repository: MomoRepository)
 
 
 
-
     private fun getAnimalExhibitList(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 val result = repository.getAnimalExhibitList()
+
+                _exhibitList.postValue(result.result?.results)
             }
         }
     }
