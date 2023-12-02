@@ -1,11 +1,16 @@
 package com.example.momo_recruit_project.exhibit
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.util.Linkify
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.momo_recruit_project.R
 import com.example.momo_recruit_project.databinding.FragmentExhibitBinding
 import com.example.momo_recruit_project.databinding.FragmentHomeBinding
@@ -27,9 +32,32 @@ class ExhibitFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+
+
         // throwing nav-arg to viewModel
         val exhibit = ExhibitFragmentArgs.fromBundle(requireArguments()).selectedExhibit
         viewModel.exhibit = exhibit
+
+
+
+        // setting exhibit content
+        binding.exhibitMemo.text = if(viewModel.exhibit?.memo == ""){
+            "無休館資訊"
+        } else {
+            viewModel.exhibit?.memo
+        }
+
+
+        // setting navigation
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.exhibitUrl.setOnClickListener {
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data = Uri.parse("${viewModel.exhibit?.url}")
+            startActivity(openURL)
+        }
 
 
         return binding.root
