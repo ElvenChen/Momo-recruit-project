@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.momo_recruit_project.data.Exhibit
 import com.example.momo_recruit_project.databinding.ViewholderAnimalExhibitListBinding
 
-class HomeListAdapter() :
+class HomeListAdapter(private val displayExhibitDetails: (Exhibit) -> Unit) :
     ListAdapter<Exhibit, RecyclerView.ViewHolder>(ExhibitListDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -20,9 +20,9 @@ class HomeListAdapter() :
             is ExhibitViewHolder -> {
                 val exhibitData = getItem(position) as Exhibit
                 holder.bind(exhibitData)
-//                holder.itemView.setOnClickListener {
-//                    displayExhibitDetails(exhibitData)
-//                }
+                holder.itemView.setOnClickListener {
+                    displayExhibitDetails(exhibitData)
+                }
             }
         }
     }

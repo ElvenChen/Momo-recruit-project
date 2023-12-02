@@ -15,7 +15,7 @@ import javax.inject.Inject
 import kotlin.coroutines.coroutineContext
 
 @HiltViewModel
-class HomeViewModel  @Inject constructor(private val repository: MomoRepository):
+class HomeViewModel @Inject constructor(private val repository: MomoRepository) :
     ViewModel() {
 
     private val _exhibitList = MutableLiveData<List<Exhibit>?>()
@@ -25,9 +25,25 @@ class HomeViewModel  @Inject constructor(private val repository: MomoRepository)
 
 
 
-    private fun getAnimalExhibitList(){
+    private val _navigateToSelectedExhibit = MutableLiveData<Exhibit?>()
+    val navigateToSelectedExhibit: LiveData<Exhibit?>
+        get() = _navigateToSelectedExhibit
+
+    // handle exhibit clicking navigation
+    val displayExhibitDetails = fun(exhibit: Exhibit) {
+        _navigateToSelectedExhibit.value = exhibit
+    }
+
+    // handle exhibit clicking navigation completed
+    fun displayExhibitDetailsCompleted() {
+        _navigateToSelectedExhibit.value = null
+    }
+
+
+
+    private fun getAnimalExhibitList() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 val result = repository.getAnimalExhibitList()
 
                 _exhibitList.postValue(result.result?.results)
@@ -35,10 +51,10 @@ class HomeViewModel  @Inject constructor(private val repository: MomoRepository)
         }
     }
 
-        init {
-            repository.test()
+    init {
+        repository.test()
 
-            getAnimalExhibitList()
-        }
+        getAnimalExhibitList()
+    }
 
 }

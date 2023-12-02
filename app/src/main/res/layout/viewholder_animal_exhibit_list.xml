@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
             android:letterSpacing="@dimen/letter_spacing"
-            android:text="TEST"
+            android:text=""
             android:textSize="@dimen/content_font_size"
             android:textColor="@color/dark_grey"
             android:maxLines="1"

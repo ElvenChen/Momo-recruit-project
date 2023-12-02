@@ -1,12 +1,14 @@
 package com.example.momo_recruit_project.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.momo_recruit_project.R
 import com.example.momo_recruit_project.databinding.FragmentHomeBinding
@@ -32,7 +34,7 @@ class HomeFragment : Fragment() {
         // setting recyclerView adapter
         binding.animalExhibitRecyclerView.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        val adapter = HomeListAdapter()
+        val adapter = HomeListAdapter(viewModel.displayExhibitDetails)
         binding.animalExhibitRecyclerView.adapter = adapter
 
 
@@ -42,6 +44,19 @@ class HomeFragment : Fragment() {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
             binding.animalExhibitProgressBar.visibility = View.GONE
+        }
+
+
+
+        // setting navigation
+        viewModel.navigateToSelectedExhibit.observe(viewLifecycleOwner){
+            it?.let {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToExhibitFragment(it
+                    )
+                )
+                viewModel.displayExhibitDetailsCompleted()
+            }
         }
 
 
