@@ -3,19 +3,15 @@ package com.example.momo_recruit_project.exhibit
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.util.Linkify
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.momo_recruit_project.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.momo_recruit_project.databinding.FragmentExhibitBinding
-import com.example.momo_recruit_project.databinding.FragmentHomeBinding
-import com.example.momo_recruit_project.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,12 +46,27 @@ class ExhibitFragment : Fragment() {
 
 
 
+        // setting recyclerView adapter
+        binding.animalListRecyclerView.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        val adapter = AnimalListAdapter()
+        binding.animalListRecyclerView.adapter = adapter
+
+
+
         //observing animal list for adapter
         viewModel.animalList.observe(viewLifecycleOwner){
-            Log.i("test", "observe live data from exhibit fragment: ${it?.size}")
-//            adapter.submitList(it)
-//            adapter.notifyDataSetChanged()
-//            binding.animalExhibitProgressBar.visibility = View.GONE
+
+            if(it.isNullOrEmpty()){
+                binding.animalListNote.visibility = View.VISIBLE
+                binding.animalListProgressBar.visibility = View.GONE
+            } else {
+                adapter.submitList(it)
+                adapter.notifyDataSetChanged()
+                binding.animalListNote.visibility = View.GONE
+                binding.animalListProgressBar.visibility = View.GONE
+            }
+
         }
 
 

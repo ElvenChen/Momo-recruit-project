@@ -4,5 +4,6 @@
     <string name="home_title">臺北市立動物園</string>
     <string name="open_url">在網頁開啟</string>
     <string name="animal_info">動物資料</string>
+    <string name="this_exhibit_has_no_animal">本館無相關動物資料</string>
 
 </resources>
