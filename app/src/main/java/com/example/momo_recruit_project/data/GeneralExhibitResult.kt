@@ -4,6 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class GeneralResult(
-    val result: GeneralResultDetail? = null
+data class GeneralExhibitResult(
+    val result: GeneralExhibitResultDetail? = null
 ) : Parcelable

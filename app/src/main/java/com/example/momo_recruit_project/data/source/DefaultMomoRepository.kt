@@ -1,7 +1,7 @@
 package com.example.momo_recruit_project.data.source
 
-import android.util.Log
-import com.example.momo_recruit_project.data.GeneralResult
+import com.example.momo_recruit_project.data.GeneralAnimalResult
+import com.example.momo_recruit_project.data.GeneralExhibitResult
 import javax.inject.Inject
 
 class DefaultMomoRepository @Inject constructor(
@@ -14,8 +14,12 @@ class DefaultMomoRepository @Inject constructor(
         momoLocalDataSource.test()
     }
 
-    override suspend fun getAnimalExhibitList() : GeneralResult {
+    override suspend fun getAnimalExhibitList() : GeneralExhibitResult {
         return momoRemoteDataSource.getAnimalExhibitList()
+    }
+
+    override suspend fun getAllAnimalDetailList(): GeneralAnimalResult {
+        return momoRemoteDataSource.getAllAnimalDetailList()
     }
 
 }

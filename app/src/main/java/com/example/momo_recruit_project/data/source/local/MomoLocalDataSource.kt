@@ -1,7 +1,8 @@
 package com.example.momo_recruit_project.data.source.local
 
 import android.util.Log
-import com.example.momo_recruit_project.data.GeneralResult
+import com.example.momo_recruit_project.data.GeneralAnimalResult
+import com.example.momo_recruit_project.data.GeneralExhibitResult
 import com.example.momo_recruit_project.data.source.MomoDataSource
 import javax.inject.Inject
 
@@ -11,7 +12,11 @@ class MomoLocalDataSource @Inject constructor (private val dao: MomoDatabaseDao)
         Log.i("test","$dao hilt inject database test")
     }
 
-    override suspend fun getAnimalExhibitList() : GeneralResult {
+    override suspend fun getAnimalExhibitList() : GeneralExhibitResult {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllAnimalDetailList(): GeneralAnimalResult {
         TODO("Not yet implemented")
     }
 }
