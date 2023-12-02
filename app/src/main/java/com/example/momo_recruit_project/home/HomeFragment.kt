@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
 
 
-        //observing list for adapter
+        //observing exhibit list for adapter
         viewModel.exhibitList.observe(viewLifecycleOwner){
             adapter.submitList(it)
             adapter.notifyDataSetChanged()

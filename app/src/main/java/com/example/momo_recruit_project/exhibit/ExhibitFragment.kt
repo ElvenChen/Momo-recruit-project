@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.util.Linkify
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,17 @@ class ExhibitFragment : Fragment() {
         }
 
 
+
+        //observing animal list for adapter
+        viewModel.animalList.observe(viewLifecycleOwner){
+            Log.i("test", "observe live data from exhibit fragment: ${it?.size}")
+//            adapter.submitList(it)
+//            adapter.notifyDataSetChanged()
+//            binding.animalExhibitProgressBar.visibility = View.GONE
+        }
+
+
+
         // setting navigation
         binding.backButton.setOnClickListener {
             findNavController().navigateUp()
@@ -58,6 +70,7 @@ class ExhibitFragment : Fragment() {
             openURL.data = Uri.parse("${viewModel.exhibit?.url}")
             startActivity(openURL)
         }
+
 
 
         return binding.root
