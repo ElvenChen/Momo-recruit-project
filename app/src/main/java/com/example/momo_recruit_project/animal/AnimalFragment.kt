@@ -35,7 +35,7 @@ class AnimalFragment : Fragment() {
         // throwing nav-arg to viewModel
         val animal = AnimalFragmentArgs.fromBundle(requireArguments()).selectedAnimal
         viewModel.animal = animal
-
+        viewModel.reorganizeAnimalData()
 
 
         // setting navigation

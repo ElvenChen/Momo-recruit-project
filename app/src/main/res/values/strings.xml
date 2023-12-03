@@ -5,7 +5,12 @@
     <string name="open_url">在網頁開啟</string>
     <string name="animal_info">動物資料</string>
     <string name="this_exhibit_has_no_animal">本館無相關動物資料</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="animal_also_known_title">別名</string>
+    <string name="animal_feature_title">簡介</string>
+    <string name="animal_behavior_title">物種特性</string>
+    <string name="animal_diet_title">食性</string>
+    <string name="animal_distribution_title">世界分布</string>
+    <string name="animal_habitat_title">棲息地</string>
+    <string name="animal_last_update_title">最後更新：</string>
 
 </resources>

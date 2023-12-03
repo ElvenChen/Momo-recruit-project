@@ -22,11 +22,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+
+
 @HiltViewModel
 class ExhibitViewModel @Inject constructor(private val repository: MomoRepository) :
     ViewModel() {
 
     var exhibit: Exhibit? = null
+
+    private val _exhibitMemo = MutableLiveData<String?>()
+    val exhibitMemo: LiveData<String?>
+        get() = _exhibitMemo
+
+
 
     private val _animalList = MutableLiveData<List<Animal>?>()
 
@@ -115,8 +123,21 @@ class ExhibitViewModel @Inject constructor(private val repository: MomoRepositor
         }
     }
 
+
+
+    fun reorganizeExhibitData(){
+        _exhibitMemo.value = if(exhibit?.memo == ""){
+            "無休館資訊"
+        } else {
+            exhibit?.memo
+        }
+    }
+
+
+
     init {
         // get animal list in this exhibit
         checkAllAnimalDetailFromDatabase()
+
     }
 }

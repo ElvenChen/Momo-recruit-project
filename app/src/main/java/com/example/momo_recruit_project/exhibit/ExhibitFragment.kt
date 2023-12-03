@@ -35,15 +35,7 @@ class ExhibitFragment : Fragment() {
         // throwing nav-arg to viewModel
         val exhibit = ExhibitFragmentArgs.fromBundle(requireArguments()).selectedExhibit
         viewModel.exhibit = exhibit
-
-
-
-        // setting exhibit content
-        binding.exhibitMemo.text = if(viewModel.exhibit?.memo == ""){
-            "無休館資訊"
-        } else {
-            viewModel.exhibit?.memo
-        }
+        viewModel.reorganizeExhibitData()
 
 
 

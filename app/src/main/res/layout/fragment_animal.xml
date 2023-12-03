@@ -55,5 +55,289 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_constraint">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/animal_main_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:bindImage="@{viewModel.animal.picUrl}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/animal_chinese_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animal.chineseName}"
+                    android:textSize="@dimen/sub_title_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_main_pic"
+                    tools:text="中文名稱"/>
+
+                <TextView
+                    android:id="@+id/animal_latin_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalLatinName}"
+                    android:textSize="@dimen/sub_title_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_chinese_name"
+                    tools:text="拉丁文名稱"/>
+
+                <TextView
+                    android:id="@+id/animal_also_known_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_also_known_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_latin_name"
+                    tools:text="別名"/>
+
+                <TextView
+                    android:id="@+id/animal_also_known_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalAlsoKnown}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_also_known_title"
+                    tools:text="別名內容"/>
+
+                <TextView
+                    android:id="@+id/animal_feature_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_feature_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_also_known_content"
+                    tools:text="簡介"/>
+
+                <TextView
+                    android:id="@+id/animal_feature_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalFeature}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_feature_title"
+                    tools:text="簡介內容"/>
+
+                <TextView
+                    android:id="@+id/animal_behavior_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_behavior_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_feature_content"
+                    tools:text="物種特性"/>
+
+                <TextView
+                    android:id="@+id/animal_behavior_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalBehavior}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_behavior_title"
+                    tools:text="物種特性內容"/>
+
+                <TextView
+                    android:id="@+id/animal_diet_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_diet_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_behavior_content"
+                    tools:text="食性"/>
+
+                <TextView
+                    android:id="@+id/animal_diet_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalDiet}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_diet_title"
+                    tools:text="食性內容"/>
+
+                <TextView
+                    android:id="@+id/animal_distribution_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_distribution_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_diet_content"
+                    tools:text="世界分布"/>
+
+                <TextView
+                    android:id="@+id/animal_distribution_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalDistribution}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_distribution_title"
+                    tools:text="世界分布內容"/>
+
+                <TextView
+                    android:id="@+id/animal_habitat_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_habitat_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_distribution_content"
+                    tools:text="棲息地"/>
+
+                <TextView
+                    android:id="@+id/animal_habitat_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalHabitat}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_habitat_title"
+                    tools:text="棲息地內容"/>
+
+                <TextView
+                    android:id="@+id/animal_last_update_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@string/animal_last_update_title"
+                    android:textSize="@dimen/content_font_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/animal_last_update_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_habitat_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="最後更新："/>
+
+                <TextView
+                    android:id="@+id/animal_last_update_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="@dimen/letter_spacing"
+                    android:text="@{viewModel.animalLastUpdateTime}"
+                    android:textSize="@dimen/content_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/animal_last_update_title"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_habitat_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="最後更新時間"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
