@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.momo_recruit_project.data.Animal
+import com.example.momo_recruit_project.data.Exhibit
 import com.example.momo_recruit_project.databinding.ViewholderAnimalDetailListBinding
 
-class AnimalListAdapter() :
+class AnimalListAdapter(private val displayAnimalDetails: (Animal) -> Unit) :
     ListAdapter<Animal, RecyclerView.ViewHolder>(AnimalListDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -21,9 +22,9 @@ class AnimalListAdapter() :
             is AnimalViewHolder -> {
                 val animalData = getItem(position) as Animal
                 holder.bind(animalData)
-//                holder.itemView.setOnClickListener {
-//                    displayExhibitDetails(exhibitData)
-//                }
+                holder.itemView.setOnClickListener {
+                    displayAnimalDetails(animalData)
+                }
             }
         }
     }

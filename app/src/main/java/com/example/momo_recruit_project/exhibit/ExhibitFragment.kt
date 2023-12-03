@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.momo_recruit_project.databinding.FragmentExhibitBinding
+import com.example.momo_recruit_project.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,7 +50,7 @@ class ExhibitFragment : Fragment() {
         // setting recyclerView adapter
         binding.animalListRecyclerView.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        val adapter = AnimalListAdapter()
+        val adapter = AnimalListAdapter(viewModel.displayAnimalDetails)
         binding.animalListRecyclerView.adapter = adapter
 
 
@@ -80,6 +81,15 @@ class ExhibitFragment : Fragment() {
             val openURL = Intent(Intent.ACTION_VIEW)
             openURL.data = Uri.parse("${viewModel.exhibit?.url}")
             startActivity(openURL)
+        }
+
+        viewModel.navigateToSelectedAnimal.observe(viewLifecycleOwner){
+            it?.let {
+                findNavController().navigate(
+                    ExhibitFragmentDirections.actionExhibitFragmentToAnimalFragment(it)
+                )
+                viewModel.displayAnimalDetailsCompleted()
+            }
         }
 
 

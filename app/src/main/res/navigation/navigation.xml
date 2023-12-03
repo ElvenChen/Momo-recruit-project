@@ -22,5 +22,19 @@
             app:argType="com.example.momo_recruit_project.data.Exhibit"
             app:nullable="false">
         </argument>
+        <action
+            android:id="@+id/action_exhibitFragment_to_animalFragment"
+            app:destination="@id/animalFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/animalFragment"
+        android:name="com.example.momo_recruit_project.animal.AnimalFragment"
+        android:label="AnimalFragment">
+        <argument
+            android:name="selectedAnimal"
+            app:argType="com.example.momo_recruit_project.data.Animal"
+            app:nullable="false">
+        </argument>
     </fragment>
 </navigation>

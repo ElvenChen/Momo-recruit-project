@@ -34,6 +34,23 @@ class ExhibitViewModel @Inject constructor(private val repository: MomoRepositor
         get() = _animalList
 
 
+
+    private val _navigateToSelectedAnimal = MutableLiveData<Animal?>()
+    val navigateToSelectedAnimal: LiveData<Animal?>
+        get() = _navigateToSelectedAnimal
+
+    // handle animal clicking navigation
+    val displayAnimalDetails = fun(animal: Animal) {
+        _navigateToSelectedAnimal.value = animal
+    }
+
+    // handle animal clicking navigation completed
+    fun displayAnimalDetailsCompleted() {
+        _navigateToSelectedAnimal.value = null
+    }
+
+
+
     // Function：直接從北市府 Open Api 撈資料，並存入 Room DB，再從 DB 中下 Query 將符合館區的動物撈出來。
     private fun updateAllAnimalDetailFromOpenApi() {
         viewModelScope.launch {
